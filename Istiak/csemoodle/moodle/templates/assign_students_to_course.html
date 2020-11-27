@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating Courses</title>
+</head>
+<body>
+<h1>Student Enrolment To Courses :</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="profileid">Student ID:</label>
+    <input type="text" name="profileid" placeholder="Enter Student ID:">
+    <label for="courseid">Course ID :</label>
+    <input type="text" name="courseid">
+    <label for="sessionid">Session ID :</label>
+    <input type="text" name="sessionid">
+    <input type="submit" value="ASSIGN">
+</form>
+<li><a href="/home/profile/admin/">Return To Profile</a></li>
+</body>
+</html>

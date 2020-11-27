@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>signup</title>
+</head>
+<body>
+<h1>Please SIGN UP</h1>
+<h1>
+Register Here!
+</h1>
+<h3>Fill out the registration form!</h3>
+<form action="" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<label for="profileid">Profile ID :</label>
+<input type="text" name="profileid" >
+<label for="name">Username :</label>
+<input type="text" name="name" placeholder="Enter Username">
+<label for="mail">Email Id:</label>
+<input type="text" name="mail">
+<label for="phoneno">Phone No :</label>
+<input type="tel" name="phoneno">
+<label for="birthdate">Date of Birth :</label>
+<input type="date" name="birthdate">
+<input type="file" name="propic" id="propic">
+<label for="city">City :</label>
+<input type="text" name="city">
+<label for="street">Street :</label>
+<input type="text" name="street">
+<label for="password">Enter Password :</label>
+<input type="password" name="password">
+<p>Please select your Role:</p>
+<input type="radio" id="teacher" name="role" value="teacher">
+<label for="teacher">Teacher</label><br>
+<input type="radio" id="student" name="role" value="student">
+<label for="student">Student</label><br>
+<input type="radio" id="admin" name="role" value="admin">
+<label for="admin">Admin</label><br>
+<input type="submit" value="SignUp">
+</form>
+</body>
+</html>

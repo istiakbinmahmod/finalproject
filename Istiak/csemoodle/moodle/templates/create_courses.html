@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating Courses</title>
+</head>
+<body>
+<h1>Course Enrolment :</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="courseid">Course ID:</label>
+    <input type="text" name="courseid" placeholder="Enter Course ID:">
+    <label for="sessionid">Session ID :</label>
+    <input type="text" name="sessionid">
+    <label for="courstitle">Course Title :</label>
+    <input type="text" name="coursetitle">
+    <label for="credithour">Credit Hour :</label>
+    <input type="text" name="credithour">
+    <input type="submit" value="CREATE">
+</form>
+<li><a href="/home/profile/admin/">Return To Profile</a></li>
+</body>
+</html>
