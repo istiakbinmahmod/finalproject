@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Forum</title>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="jumbotron" >
+        <label for="profileid">Profile ID:</label>
+    <input type="text" name="profileid" placeholder="Enter Profile ID:" required>
+        <br>
+    <label for="forum_post">Write your post here:</label>
+    <input type="text" name="forum_post">
+    <input type="submit" value="LOGIN">
+
+
+</form>
+</body>
+</html>

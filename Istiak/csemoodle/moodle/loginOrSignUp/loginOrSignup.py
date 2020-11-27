@@ -82,7 +82,7 @@ def user_login(request):
                     print("success")
                     print("sql:" + sql)
                     # request.session.__setitem__('username',dbuser)
-                    request.session['userprofileid'] = dbuserid
+                    request.session['userprofileid'] = dbprofileid
                     request.session['username'] = dbname
                     request.session['useremail'] = dbemail
                     request.session['userphoneno'] = dbphoneno
@@ -234,27 +234,7 @@ def profilestudenthome(request):
     except:
         user_logout(request)
     name = request.session['username']
-    profileid = request.session['userprofileid']
-    print(profileid)
-    print(name)
-    cur = connection.cursor()
-    sql = "select course_id, session_id from studentcourserelation where profile_id = %s"
-    cur.execute(sql, [profileid])
-    results = cur.fetchall()
-    dict_result = []
-    for r in results:
-        cour_id = r[0]
-        sess_id = r[1]
-        """
-        sql2 = "select course_id, session_id, course_title, credit_hour from course where sess_id = %s"
-        cur.execute(sql, [sess_id])
-        resultss = cur.fetchall()
-        """
-        row = {'cou_id':r[0], 'ses_id':r[1]}
-        dict_result.append(row)
-    cur.close()
-    connection.commit()
-    return render(request, 'homepagestudent.html', {'courses':dict_result})
+    return render(request, 'homepagestudent.html', {'name':name})
 def profileteacherhome(request):
     try:
         usr = request.session['username']

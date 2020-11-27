@@ -1,16 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+</style>
 <head>
-    <meta charset="UTF-8">
-    <title>signup</title>
+    <title>
+        Sign Up
+    </title>
 </head>
 <body>
-<h1>Please SIGN UP</h1>
 <h1>
 Register Here!
 </h1>
 <h3>Fill out the registration form!</h3>
-<form action="" method="post" enctype="multipart/form-data">
+<div class="jumbotron">
+    <form action="" method="post" enctype="multipart/form-data" style="border:1px solid #ccc">
 {% csrf_token %}
 <label for="profileid">Profile ID :</label>
 <input type="text" name="profileid" >
@@ -22,7 +94,9 @@ Register Here!
 <input type="tel" name="phoneno">
 <label for="birthdate">Date of Birth :</label>
 <input type="date" name="birthdate">
+        <label for = "propic" name = "Profile Picture">Upload Your Profile Picture: </label>
 <input type="file" name="propic" id="propic">
+        <br>
 <label for="city">City :</label>
 <input type="text" name="city">
 <label for="street">Street :</label>
@@ -38,5 +112,9 @@ Register Here!
 <label for="admin">Admin</label><br>
 <input type="submit" value="SignUp">
 </form>
+</div>
+
 </body>
 </html>
+
+

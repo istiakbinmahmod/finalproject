@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'ORCL',
-        'USER': 'MOODLEPROJECT',
-        'PASSWORD': 'moodle',
+        'USER': 'moodleproject2',
+        'PASSWORD': '123456',
         'HOST': 'localhost',
         'PORT': '1521',
     }
