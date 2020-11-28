@@ -82,7 +82,7 @@ def user_login(request):
                     print("success")
                     print("sql:" + sql)
                     # request.session.__setitem__('username',dbuser)
-                    request.session['userprofileid'] = dbprofileid
+                    request.session['userprofileid'] = dbuserid
                     request.session['username'] = dbname
                     request.session['useremail'] = dbemail
                     request.session['userphoneno'] = dbphoneno
@@ -229,19 +229,63 @@ def user_logout(request):
         return render(request, 'logout.html')
 
 def profilestudenthome(request):
-    try:
-        usr = request.session['username']
-    except:
-        user_logout(request)
-    name = request.session['username']
-    return render(request, 'homepagestudent.html', {'name':name})
+        try:
+            usr = request.session['username']
+        except:
+            user_logout(request)
+        name = request.session['username']
+        profileid = request.session['userprofileid']
+        print(profileid)
+        print(name)
+        cur = connection.cursor()
+        sql = "select course_id, session_id from studentcourserelation where profile_id = %s"
+        cur.execute(sql, [profileid])
+        results = cur.fetchall()
+        dict_result = []
+        for r in results:
+            cour_id = r[0]
+            sess_id = r[1]
+            """
+            sql2 = "select course_id, session_id, course_title, credit_hour from course where sess_id = %s"
+            cur.execute(sql, [sess_id])
+            resultss = cur.fetchall()
+            """
+            row = {'cou_id': cour_id, 'ses_id': sess_id}
+            dict_result.append(row)
+        cur.close()
+        connection.commit()
+        return render(request, 'homepagestudent.html', {'courses': dict_result})
+
+
 def profileteacherhome(request):
     try:
         usr = request.session['username']
     except:
         user_logout(request)
     name = request.session['username']
-    return render(request, 'homepageteacher.html', {'name':name})
+    profileid = request.session['userprofileid']
+    print(profileid)
+    print(name)
+    cur = connection.cursor()
+    sql = "select course_id, session_id from instructorcourserelation where profile_id = %s"
+    cur.execute(sql, [profileid])
+    results = cur.fetchall()
+    dict_result = []
+    for r in results:
+        cour_id = r[0]
+        sess_id = r[1]
+        """
+        sql2 = "select course_id, session_id, course_title, credit_hour from course where sess_id = %s"
+        cur.execute(sql, [sess_id])
+        resultss = cur.fetchall()
+        """
+        row = {'cou_id': cour_id, 'ses_id': sess_id}
+        dict_result.append(row)
+    cur.close()
+    connection.commit()
+    return render(request, 'homepageteacher.html', {'courses': dict_result})
+
+
 def profileadminhome(request):
     try:
         usr = request.session['username']
@@ -266,3 +310,5 @@ def profileadminhome(request):
     name = request.session['username']
     return render(request, 'homepageadmin.html', {'name':name})
 
+def student_to_course(request):
+    return  render(request, 'course_inside.html')
